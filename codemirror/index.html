@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <title>ClassRoom</title>
+    <link rel="stylesheet" href="../lib/codemirror.css">
+    <script src="../lib/codemirror.js"></script>
+    <script src="../mode/xml/xml.js"></script>
+    <script src="../mode/javascript/javascript.js"></script>
+   <link rel="stylesheet" href="../doc/docs.css">
+   <link rel="stylesheet" href="../theme/monokai.css">
+   <link rel="stylesheet" href="../theme/ambiance.css">
+
+
+    <style type="text/css">
+      .codemirror {border-top: 1px solid black; border-bottom: 1px solid black;}
+    </style>
+  </head>
+  <body>
+    <h1></h1>
+    <form><textarea id="code" name="code">
+</textarea></form>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/share/share.js"></script>
+ <script src="/codemirror_attach.js"></script>
+<script>
+    var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        mode: "javascript",
+        lineNumbers: true,
+        lineWrapping: true,
+        readOnly: true,
+        theme: "ambiance",
+        onCursorActivity: function() {
+            editor.setLineClass(hlLine, null);
+            hlLine = editor.setLineClass(editor.getCursor().line, "activeline");
+        }
+    });
+    var hlLine = editor.setLineClass(0, "activeline");
+    sharejs.open('hello', 'text', function(error, doc) {
+        doc.attach_codemirror(editor);
+    });
+
+    function teacher(){
+      editor.setOption("readOnly", false);
+    }
+
+</script>
+  </body>
+</html>
