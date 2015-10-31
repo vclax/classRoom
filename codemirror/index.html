@@ -3,6 +3,9 @@
   <head>
     <title>ClassRoom</title>
     <link rel="stylesheet" href="../lib/codemirror.css">
+    <link rel="stylesheet" href="../lib/bootstrap.css">
+    <link rel="stylesheet" href="../lib/cover.css">
+
     <script src="../lib/codemirror.js"></script>
     <script src="../mode/xml/xml.js"></script>
     <script src="../mode/javascript/javascript.js"></script>
@@ -16,9 +19,16 @@
     </style>
   </head>
   <body>
-    <h1></h1>
-    <form><textarea id="code" name="code">
-</textarea></form>
+    <div class="container">
+    <div class="col-md-5">
+      <iframe id="streaming" width="420" height="315" src="https://www.youtube.com/embed/_pagw_-7cEY" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-7">
+      <form>
+        <textarea id="code" name="code"></textarea>
+      </form>
+    </div>
+</div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="/share/share.js"></script>
@@ -42,6 +52,11 @@
 
     function teacher(){
       editor.setOption("readOnly", false);
+    }
+
+    function streaming(id){
+      var url = "https://www.youtube.com/watch?v"+id;
+      document.getElementById('streaming').setAttribute('src', url);
     }
 
 </script>
