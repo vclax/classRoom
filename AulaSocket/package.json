@@ -1,0 +1,17 @@
+{
+  "name": "share-mirror",
+  "version": "0.1.0",
+  "description": "ShareJS + CodeMirror",
+  "keywords": ["operational transformation", "ot", "concurrent", "collaborative", "database", "server"],
+  "homepage": "",
+  "author": "Douglas Tarr <douglas.tarr@gmail.com>",
+  "main": "index.js",
+  "bin": {
+    "codeshare.js": "bin/codeshare"
+  },
+  "dependencies": {
+    "websocket": "*",
+    "http": "*",
+    "express": "*"
+  }
+}
